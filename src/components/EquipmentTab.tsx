@@ -4,6 +4,7 @@ import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import Icon from '@/components/ui/icon';
+import ExcelUpload from '@/components/ExcelUpload';
 
 interface Equipment {
   id: number;
@@ -17,11 +18,13 @@ interface Equipment {
 
 interface EquipmentTabProps {
   equipmentData: Equipment[];
+  onEquipmentLoad: (data: any[]) => void;
 }
 
-const EquipmentTab = ({ equipmentData }: EquipmentTabProps) => {
+const EquipmentTab = ({ equipmentData, onEquipmentLoad }: EquipmentTabProps) => {
   return (
     <div className="space-y-6">
+      <ExcelUpload onDataLoad={(data) => onEquipmentLoad(data)} type="equipment" />
       <Card>
         <CardHeader>
           <div className="flex items-center justify-between">
