@@ -1,0 +1,30 @@
+{
+  "tests": [
+    {
+      "name": "Get repair requests",
+      "method": "GET",
+      "path": "/",
+      "expectedStatus": 200,
+      "expectedBody": [],
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Create new request",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "equipment": "Трактор МТЗ-82",
+        "issue": "Замена масла",
+        "priority": "Средний",
+        "date": "25.10.2025",
+        "status": "Новая"
+      },
+      "expectedStatus": 201,
+      "expectedBody": {
+        "id": "number",
+        "message": "string"
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}

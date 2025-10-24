@@ -4,6 +4,7 @@ import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import Icon from '@/components/ui/icon';
+import CreateRequestDialog from '@/components/CreateRequestDialog';
 
 interface RepairRequest {
   id: number;
@@ -16,9 +17,10 @@ interface RepairRequest {
 
 interface RequestsTabProps {
   repairRequests: RepairRequest[];
+  onCreateRequest: (data: any) => Promise<boolean>;
 }
 
-const RequestsTab = ({ repairRequests }: RequestsTabProps) => {
+const RequestsTab = ({ repairRequests, onCreateRequest }: RequestsTabProps) => {
   return (
     <div className="space-y-6">
       <Card>
@@ -29,6 +31,7 @@ const RequestsTab = ({ repairRequests }: RequestsTabProps) => {
               <CardDescription>Управление заявками на ремонт и обслуживание</CardDescription>
             </div>
             <div className="flex gap-2">
+              <CreateRequestDialog onCreateRequest={onCreateRequest} />
               <Select defaultValue="all">
                 <SelectTrigger className="w-40">
                   <SelectValue placeholder="Статус" />

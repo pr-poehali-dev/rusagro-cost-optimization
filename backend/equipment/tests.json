@@ -1,0 +1,31 @@
+{
+  "tests": [
+    {
+      "name": "Get equipment list",
+      "method": "GET",
+      "path": "/",
+      "expectedStatus": 200,
+      "expectedBody": [],
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Add new equipment",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "name": "Тестовый трактор",
+        "type": "Трактор",
+        "status": "Исправен",
+        "nextService": "30 дней",
+        "cost": 15000,
+        "location": "Склад №1"
+      },
+      "expectedStatus": 201,
+      "expectedBody": {
+        "id": "number",
+        "message": "string"
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}
